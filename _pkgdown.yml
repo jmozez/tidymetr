@@ -1,4 +1,4 @@
-url: https://tidysynthesis.in4metrix.dev/
+url: https://tidymetr.in4metrix.dev/
 
 template:
   bootstrap: 5
@@ -33,9 +33,9 @@ figures:
 
 repo:
   url:
-    home: https://github.com/jmozez/tidysynthesis/
-    source: https://github.com/jmozez/tidysynthesis/blob/main/
-    issue: https://github.com/jmozez/tidysynthesis/issues/
+    home: https://github.com/jmozez/tidymetr/
+    source: https://github.com/jmozez/tidymetr/blob/main/
+    issue: https://github.com/jmozez/tidymetr/issues/
   branch: main
 
 navbar:
@@ -62,16 +62,16 @@ navbar:
         - text: "tidyepidemio: Epidemiological analysis"
           icon: fa-virus
           href: https://tidyepidemio.in4metrix.dev/
-        - text: "tidysynthesis: Meta-analysis and evidence synthesis"
+        - text: "tidymetr: Meta-analysis and evidence synthesis"
           icon: fa-layer-group
-          href: https://tidysynthesis.in4metrix.dev/
+          href: https://tidymetr.in4metrix.dev/
     github:
       icon: fa-github
       aria-label: Source code on GitHub
-      href: https://github.com/jmozez/tidysynthesis
+      href: https://github.com/jmozez/tidymetr
 
 home:
-  title: "tidysynthesis: Tidy Meta-Analysis and Evidence Synthesis"
+  title: "tidymetr: Tidy Meta-Analysis and Evidence Synthesis"
   sidebar:
     structure: [links, license, community, citation, authors, dev]
 

@@ -3,5 +3,5 @@
 .RData
 .Ruserdata
 *.tar.gz
-tidysynthesis.Rcheck/
+tidymetr.Rcheck/
 docs/
