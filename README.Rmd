@@ -1,0 +1,142 @@
+---
+output:
+  github_document:
+    md_extensions: "-smart"
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file. -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+options(pillar.sigfig = 4, width = 80, cli.unicode = FALSE)
+```
+
+# tidysynthesis
+
+<!-- badges: start -->
+[![R-CMD-check](https://github.com/jmozez/tidysynthesis/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/jmozez/tidysynthesis/actions/workflows/R-CMD-check.yaml)
+[![lint](https://github.com/jmozez/tidysynthesis/actions/workflows/lint.yaml/badge.svg)](https://github.com/jmozez/tidysynthesis/actions/workflows/lint.yaml)
+<!-- badges: end -->
+
+tidysynthesis brings meta-analysis and evidence synthesis into the
+tidyverse and tidymodels. Effect sizes, pooled models, meta-regressions,
+network meta-analyses and bias diagnostics are all tibbles, so they can be
+filtered, joined and plotted with the tools you already use, and every
+function takes the data as its first argument so it works with the pipe.
+
+The estimators are written in base R and are checked against
+[metafor](https://www.metafor-project.org) in the test suite.
+
+## Installation
+
+Install the development version from GitHub with:
+
+```r
+# install.packages("pak")
+pak::pak("jmozez/tidysynthesis")
+```
+
+## What it does
+
+| Area | Functions |
+|------|-----------|
+| Effect sizes | `meta_effect_size()` for SMD (Hedges' g), MD, log RR, log OR, log IRR, Fisher's z and logit proportions; `meta_transform()` |
+| Pooling | `meta_pool()` with FE, REML, ML, DL, PM and SJ estimators, Hartung-Knapp-Sidik-Jonkman tests and prediction intervals |
+| Moderators | `meta_regress()`, `meta_subgroup()` and `meta_multilevel()` (three-level and phylogenetic models) |
+| Networks | `meta_pairwise()` and `meta_network()` with league tables, P-scores, design-by-treatment inconsistency and direct and indirect evidence |
+| Small-study effects | `meta_egger()`, `meta_begg()`, `meta_trimfill()`, `meta_pet_peese()` and `meta_failsafe()` |
+| Sensitivity | `meta_leave1out()`, `meta_cumulative()` and `meta_influence()` |
+| tidymodels | `step_meta_effect_size()`, `step_meta_precision()` and `step_meta_impute_sd()` for recipes; `meta_leave_study_out_cv()` and `meta_cluster_cv()` for rsample; `inverse_var_rmse()`, `coverage_prob()` and `heterogeneity_r2()` for yardstick; `meta_linear()` for parsnip |
+| Output | `tidy()`, `glance()`, `augment()`, `predict()` and `autoplot()` methods |
+
+## A first meta-analysis
+
+The `bcg_trials` data hold the 13 trials of the BCG vaccine against
+tuberculosis summarised by Colditz et al. (1994).
+
+```{r example}
+library(tidysynthesis)
+
+bcg <- meta_effect_size(
+  bcg_trials, "RR",
+  event1 = tpos, n1 = tpos + tneg,
+  event2 = cpos, n2 = cpos + cneg,
+  study = author
+)
+
+fit <- meta_pool(bcg, method = "REML", test = "hksj")
+fit
+glance(fit)
+```
+
+Absolute latitude explains much of the heterogeneity:
+
+```{r regression}
+meta_regress(bcg, ~ ablat) |> glance()
+```
+
+Small-study effects and sensitivity checks take the same data or the
+fitted model:
+
+```{r bias}
+meta_egger(fit)
+meta_trimfill(fit)
+meta_leave1out(fit)
+```
+
+```{r forest, fig.height = 5}
+autoplot(fit, type = "forest")
+```
+
+## Network meta-analysis
+
+```{r network}
+pw <- meta_pairwise(smoking_cessation, study = study, treatment = trt,
+                    measure = "OR", event = xi, n = ni)
+nma <- meta_network(pw, study = study, treat1 = treat1, treat2 = treat2,
+                    reference = "no_contact", small_values = "bad")
+nma
+tidy(nma, type = "inconsistency")
+```
+
+## tidymodels
+
+Effect sizes can be computed inside a recipe, models can be tuned with
+study-level resampling and scored with inverse variance metrics:
+
+```{r tidymodels}
+library(parsnip)
+
+folds <- meta_leave_study_out_cv(bcg, study = author)
+folds
+
+meta_linear(engine = "reml") |>
+  fit(.yi ~ ablat, data = bcg) |>
+  predict(new_data = data.frame(ablat = c(15, 45)), type = "pred_int")
+```
+
+## Data
+
+| Dataset | Description | Source |
+|---------|-------------|--------|
+| `bcg_trials` | BCG vaccine trials | Colditz et al. (1994) |
+| `stroke_los` | Length of hospital stay in stroke units | Normand (1999) |
+| `adherence_cor` | Conscientiousness and medication adherence | Molloy et al. (2014) |
+| `school_calendar` | Modified school calendars and achievement (three-level) | Konstantopoulos (2011) |
+| `smoking_cessation` | Smoking cessation interventions (network) | Hasselblad (1998) |
+
+See the help page of each dataset for the full citation.
+
+## Companion advisor
+
+[tidyvisor](https://github.com/jmozez/tidyvisor) is an optional companion
+advisor for tidysynthesis. It is not required to use this package.
+
+## Licence
+
+MIT (c) 2026 Jimmy Moses.
