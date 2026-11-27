@@ -105,16 +105,16 @@ meta_linear_fit <- function(formula, data, weights = NULL, method = "REML",
   yi <- model.response(mf)
   tt <- delete.response(terms(mf))
   data2 <- as_bare_tibble(data)
-  data2$.tidysynthesis_yi <- yi
-  data2$.tidysynthesis_vi <- vi
+  data2$.tidymetr_yi <- yi
+  data2$.tidymetr_vi <- vi
   labels <- attr(tt, "term.labels")
   mods <- if (length(labels) == 0L) {
     ~1
   } else {
     stats::reformulate(labels, intercept = attr(tt, "intercept") == 1)
   }
-  meta_regress(data2, mods = mods, yi = .data$.tidysynthesis_yi,
-               vi = .data$.tidysynthesis_vi, method = method, test = test,
+  meta_regress(data2, mods = mods, yi = .data$.tidymetr_yi,
+               vi = .data$.tidymetr_vi, method = method, test = test,
                level = level)
 }
 
@@ -128,14 +128,14 @@ register_meta_linear <- function() {
   engines <- c(reml = "REML", dl = "DL", fe = "FE")
   for (eng in names(engines)) {
     parsnip::set_model_engine("meta_linear", "regression", eng)
-    parsnip::set_dependency("meta_linear", eng, "tidysynthesis",
+    parsnip::set_dependency("meta_linear", eng, "tidymetr",
                             mode = "regression")
     parsnip::set_fit(
       model = "meta_linear", eng = eng, mode = "regression",
       value = list(
         interface = "formula",
         protect = c("formula", "data", "weights"),
-        func = c(pkg = "tidysynthesis", fun = "meta_linear_fit"),
+        func = c(pkg = "tidymetr", fun = "meta_linear_fit"),
         defaults = list(method = engines[[eng]])
       )
     )

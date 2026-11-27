@@ -149,7 +149,7 @@ tidy.step_meta_effect_size <- function(x, ...) {
 
 #' @export
 required_pkgs.step_meta_effect_size <- function(x, ...) {
-  c("tidysynthesis")
+  c("tidymetr")
 }
 
 # step_meta_precision ---------------------------------------------------------
@@ -289,7 +289,7 @@ tidyr_expand <- function(terms, output) {
 
 #' @export
 required_pkgs.step_meta_precision <- function(x, ...) {
-  c("tidysynthesis")
+  c("tidymetr")
 }
 
 # step_meta_impute_sd ---------------------------------------------------------
@@ -469,5 +469,5 @@ tidy.step_meta_impute_sd <- function(x, ...) {
 
 #' @export
 required_pkgs.step_meta_impute_sd <- function(x, ...) {
-  c("tidysynthesis")
+  c("tidymetr")
 }

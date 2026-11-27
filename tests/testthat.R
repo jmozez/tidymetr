@@ -7,6 +7,6 @@
 # * https://testthat.r-lib.org/articles/special-files.html
 
 library(testthat)
-library(tidysynthesis)
+library(tidymetr)
 
-test_check("tidysynthesis")
+test_check("tidymetr")

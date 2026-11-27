@@ -1,7 +1,7 @@
-#' tidysynthesis: tidy meta-analysis and evidence synthesis
+#' tidymetr: tidy meta-analysis and evidence synthesis
 #'
 #' @description
-#' tidysynthesis provides a pipe-friendly grammar for meta-analysis. Effect
+#' tidymetr provides a pipe-friendly grammar for meta-analysis. Effect
 #' sizes are computed with [meta_effect_size()], pooled with [meta_pool()],
 #' explained with [meta_regress()], [meta_subgroup()] and
 #' [meta_multilevel()], compared across treatments with [meta_network()],
