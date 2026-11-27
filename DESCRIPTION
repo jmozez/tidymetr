@@ -1,0 +1,59 @@
+Package: tidysynthesis
+Title: Tidy Meta-Analysis and Evidence Synthesis
+Version: 0.1.0
+Authors@R: 
+    person("Jimmy", "Moses", , "jimmy.moses@pnguot.ac.pg", role = c("aut", "cre", "cph"),
+           comment = c(ORCID = "0000-0003-3342-2384"))
+Description: A tidy toolkit for meta-analysis and evidence synthesis.
+    Computes standardised mean differences (Hedges' g), mean differences,
+    log risk, odds and incidence rate ratios, Fisher's z and logit
+    proportions; pools them with common-effect and random-effects models
+    using restricted maximum likelihood, DerSimonian-Laird, Paule-Mandel
+    and Sidik-Jonkman estimators with Hartung-Knapp-Sidik-Jonkman
+    adjustments and prediction intervals; fits meta-regression, subgroup,
+    three-level and phylogenetic models; performs frequentist
+    contrast-based network meta-analysis with P-scores and inconsistency
+    diagnostics; and provides publication bias diagnostics (Egger, Begg,
+    trim-and-fill, PET-PEESE, fail-safe N) and sensitivity analyses. All
+    estimators are written in base R. The package integrates with
+    'tidymodels' through 'recipes' steps, 'rsample' resampling schemes,
+    'yardstick' metrics and a 'parsnip' model specification, and returns
+    'tibble' subclasses with 'broom' style tidiers and 'ggplot2' plots.
+    Methods follow DerSimonian and Laird (1986) <doi:10.1016/0197-2456(86)90046-2>,
+    Viechtbauer (2005) <doi:10.3102/10769986030003261>,
+    Rucker and Schwarzer (2015) <doi:10.1186/s12874-015-0060-8> and
+    Duval and Tweedie (2000) <doi:10.1111/j.0006-341x.2000.00455.x>.
+License: MIT + file LICENSE
+URL: https://github.com/jmozez/tidysynthesis
+BugReports: https://github.com/jmozez/tidysynthesis/issues
+Depends: 
+    R (>= 4.1.0)
+Imports: 
+    cli (>= 3.6.0),
+    dplyr (>= 1.1.0),
+    generics (>= 0.1.3),
+    ggplot2 (>= 3.4.0),
+    parsnip (>= 1.1.0),
+    pillar (>= 1.9.0),
+    recipes (>= 1.1.0),
+    rlang (>= 1.1.0),
+    rsample (>= 1.2.0),
+    stats,
+    tibble (>= 3.2.0),
+    tidyselect (>= 1.2.0),
+    utils,
+    vctrs (>= 0.6.0),
+    yardstick (>= 1.2.0)
+Suggests: 
+    hardhat,
+    knitr,
+    metafor,
+    rmarkdown,
+    testthat (>= 3.0.0),
+    workflows
+Config/testthat/edition: 3
+Encoding: UTF-8
+Language: en-NZ
+LazyData: true
+Roxygen: list(markdown = TRUE)
+Config/roxygen2/version: 8.1.1
