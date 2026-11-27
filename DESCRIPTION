@@ -24,8 +24,8 @@ Description: A tidy toolkit for meta-analysis and evidence synthesis.
     Rucker and Schwarzer (2015) <doi:10.1186/s12874-015-0060-8> and
     Duval and Tweedie (2000) <doi:10.1111/j.0006-341x.2000.00455.x>.
 License: MIT + file LICENSE
-URL: https://tidysynthesis.in4metrix.dev/, https://github.com/jmozez/tidysynthesis
-BugReports: https://github.com/jmozez/tidysynthesis/issues
+URL: https://tidymetr.in4metrix.dev/, https://github.com/jmozez/tidymetr
+BugReports: https://github.com/jmozez/tidymetr/issues
 Depends: 
     R (>= 4.1.0)
 Imports: 

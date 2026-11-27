@@ -4,13 +4,13 @@
 # tidysynthesis
 
 <!-- badges: start -->
-[![R-CMD-check](https://github.com/jmozez/tidysynthesis/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/jmozez/tidysynthesis/actions/workflows/R-CMD-check.yaml)
-[![Lint](https://github.com/jmozez/tidysynthesis/actions/workflows/lint.yaml/badge.svg)](https://github.com/jmozez/tidysynthesis/actions/workflows/lint.yaml)
-[![Website deploy](https://github.com/jmozez/tidysynthesis/actions/workflows/vercel.yaml/badge.svg)](https://github.com/jmozez/tidysynthesis/actions/workflows/vercel.yaml)
-[![GitHub](https://img.shields.io/badge/source-GitHub-181717?logo=github)](https://github.com/jmozez/tidysynthesis)
+[![R-CMD-check](https://github.com/jmozez/tidymetr/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/jmozez/tidymetr/actions/workflows/R-CMD-check.yaml)
+[![Lint](https://github.com/jmozez/tidymetr/actions/workflows/lint.yaml/badge.svg)](https://github.com/jmozez/tidymetr/actions/workflows/lint.yaml)
+[![Website deploy](https://github.com/jmozez/tidymetr/actions/workflows/vercel.yaml/badge.svg)](https://github.com/jmozez/tidymetr/actions/workflows/vercel.yaml)
+[![GitHub](https://img.shields.io/badge/source-GitHub-181717?logo=github)](https://github.com/jmozez/tidymetr)
 [![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
-[![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/jmozez/tidysynthesis/blob/main/LICENSE.md)
-[![Website](https://img.shields.io/badge/website-tidysynthesis.in4metrix.dev-1A9E93)](https://tidysynthesis.in4metrix.dev)
+[![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/jmozez/tidymetr/blob/main/LICENSE.md)
+[![Website](https://img.shields.io/badge/website-tidymetr.in4metrix.dev-1A9E93)](https://tidymetr.in4metrix.dev)
 [![Advice with tidyvisor](https://img.shields.io/badge/advice%20with-tidyvisor-1A9E93)](https://tidyvisor.in4metrix.dev)
 [![Maps with tidymapr](https://img.shields.io/badge/maps%20with-tidymapr-11376B)](https://tidymapr.in4metrix.dev)
 <!-- badges: end -->
