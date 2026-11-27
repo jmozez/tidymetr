@@ -1,7 +1,7 @@
 # Publish the pkgdown site to Vercel. pkgdown.yaml builds the site and pushes
 # it to the gh-pages branch; this workflow then deploys that branch.
-# Needs the repository secret VERCEL_TOKEN; the Vercel project tidysynthesis
-# serves tidysynthesis.in4metrix.dev.
+# Needs the repository secret VERCEL_TOKEN; the Vercel project for tidymetr
+# serves tidymetr.in4metrix.dev.
 on:
   workflow_run:
     workflows: [pkgdown.yaml]
@@ -16,7 +16,7 @@ permissions: read-all
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    if: ${{ github.repository == 'jmozez/tidysynthesis' && (github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success') }}
+    if: ${{ github.repository == 'jmozez/tidymetr' && (github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success') }}
     env:
       VERCEL_ORG_ID: team_sQKBoVytwZq7ergPfB5Er8ZR
       VERCEL_PROJECT_ID: prj_QjeQbpNx6QamrYe98hBKxA0z4UcI

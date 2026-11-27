@@ -41,7 +41,7 @@ test_that("step_meta_effect_size() handles names, roles and dropping", {
   expect_equal(nrow(td0), 6)
   expect_match(printed(rec), "Effect size")
   expect_match(printed(pr), "Effect size")
-  expect_identical(required_pkgs(pr), c("recipes", "tidysynthesis"))
+  expect_identical(required_pkgs(pr), c("recipes", "tidymetr"))
 })
 
 test_that("step_meta_effect_size() rejects bad inputs", {
@@ -79,7 +79,7 @@ test_that("step_meta_precision() derives precision features", {
                "positive")
   expect_error(step_meta_precision(recipe(y ~ v, data = bad), v,
                                    output = "x"), "must use")
-  expect_identical(required_pkgs(pr), c("recipes", "tidysynthesis"))
+  expect_identical(required_pkgs(pr), c("recipes", "tidymetr"))
 })
 
 test_that("step_meta_impute_sd() fills missing standard deviations", {
@@ -116,5 +116,5 @@ test_that("step_meta_impute_sd() fills missing standard deviations", {
   expect_error(prep(step_meta_impute_sd(recipe(~., data = d), sd1, sd2,
                                         method = "pooled", n = n1)),
                "one")
-  expect_identical(required_pkgs(cv), c("recipes", "tidysynthesis"))
+  expect_identical(required_pkgs(cv), c("recipes", "tidymetr"))
 })
